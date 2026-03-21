@@ -9,8 +9,40 @@ Use this skill when the user wants to create mascots, generate emote sets, impor
 
 ## Prerequisites
 
-- `hypermoji` must be installed and available on `PATH`
-- the user must already be authenticated with `hypermoji login`
+- `hypermoji` should be installed and available on `PATH`
+- the user should be authenticated with `hypermoji login`
+
+## When To Use This Skill
+
+Use this skill when the user asks to:
+
+- create a mascot through Hypermoji
+- generate one emote or an emote set
+- import a character into Hypermoji
+- inspect Hypermoji jobs, mascots, or emotes
+- download Hypermoji-generated assets
+
+Typical requests:
+
+- "Create a mascot with Hypermoji"
+- "Make an emote pack for this mascot"
+- "Use Hypermoji CLI to generate a character"
+- "Check my Hypermoji jobs"
+- "Download this Hypermoji emote"
+
+## Environment Check
+
+Check whether the CLI exists first:
+
+```bash
+command -v hypermoji
+```
+
+If it is missing, stop and tell the user to install it:
+
+```bash
+npm install -g @hypersocial/hypermoji-cli
+```
 
 Check auth first:
 
