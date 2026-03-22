@@ -1,11 +1,11 @@
 ---
 name: hypermoji
-description: Use when a user wants to create or manage Hypermoji mascots or emotes through the Hypermoji CLI, including mascot generation, mascot import from image URL, emote batch generation, job tracking, and asset download. Requires the `hypermoji` CLI to be installed and authenticated first.
+description: Use when a user wants to create or manage Hypermoji mascots or emotes through the Hypermoji CLI, including interactive browsing, mascot generation, mascot import from image URL, emote batch generation, job tracking, and asset download. Requires the `hypermoji` CLI to be installed and authenticated first.
 ---
 
 # Hypermoji
 
-Use this skill when the user wants to create mascots, generate emote sets, import a character, inspect jobs, or download assets through the Hypermoji CLI.
+Use this skill when the user wants to create mascots, generate emote sets, import a character, inspect jobs, browse outputs interactively, or download assets through the Hypermoji CLI.
 
 ## Prerequisites
 
@@ -44,6 +44,12 @@ If it is missing, stop and tell the user to install it:
 npm install -g @hypersocial/hypermoji-cli
 ```
 
+The CLI can also install the public Hypermoji skill:
+
+```bash
+hypermoji skills install
+```
+
 Check auth first:
 
 ```bash
@@ -62,6 +68,25 @@ hypermoji login
 - For long-running operations, create the job, then wait for it
 - Use batch emote generation instead of multiple single emote commands
 - Do not try to automate the browser login flow from this skill
+- For human-guided browsing, prefer the interactive shell before raw list commands
+
+## Interactive Shell
+
+For exploration and asset picking, start with:
+
+```bash
+hypermoji
+```
+
+The interactive shell supports:
+
+- browsing mascots, styles, jobs, and emotes
+- visible tabs like `Search`, `Popular`, `Recent`, and `Best`
+- type-to-search from any browse list
+- `Enter` / `o` to open the selected asset when available
+- `d` to download mascot or emote assets locally
+
+Use the interactive shell when the user wants to browse, compare, search, or pick assets manually. Use direct commands with `--json` when you need structured output for follow-up automation.
 
 ## Mascot Creation Workflow
 
@@ -150,6 +175,8 @@ hypermoji --json mascots get <mascot-id>
 hypermoji --json emotes get <emote-id>
 hypermoji emotes download <emote-id> --format all
 ```
+
+In the interactive shell, `d` downloads assets into a local `hypermoji-downloads/` folder under the current working directory.
 
 ## Prompt Guidance
 
